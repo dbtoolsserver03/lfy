@@ -8,6 +8,6 @@ public class WorldController {
 
 	@RequestMapping("/w")
 	public String world66() {
-		return "World";
+		return "World ";
 	}
 }
