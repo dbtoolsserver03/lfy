@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
@@ -32,7 +33,12 @@ import ch.qos.logback.core.hook.DefaultShutdownHook;
 
 // 写在容器类的组件里就可以.比如@Component、@Controller、@Service、@Repository
 @Import({ User.class, DefaultShutdownHook.class })
+@ImportResource("classpath:beans.xml")
+
 @Configuration(proxyBeanMethods = false) //告诉SPRINGBOOT 这是一个配置类 == 配置文件beans.XML
+
+
+
 public class MyConfig {
 
 	/**

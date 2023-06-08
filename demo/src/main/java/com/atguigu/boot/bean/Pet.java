@@ -14,8 +14,10 @@ public class Pet {
 	}
 
 	public Pet(String name) {
-		super();
 		this.name = name;
+	}
+
+	public Pet() {
 	}
 
 	@Override
