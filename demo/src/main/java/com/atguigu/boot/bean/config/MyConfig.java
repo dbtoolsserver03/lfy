@@ -2,9 +2,12 @@ package com.atguigu.boot.bean.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
+
+import ch.qos.logback.core.hook.DefaultShutdownHook;
 /**
  * 1.配置类里面使用@Bean标在方法上给容器注册组件，默认也是单补全的。
  * 2.配置类本身也是组件
@@ -16,7 +19,18 @@ import com.atguigu.boot.bean.User;
  *   ○ 最佳实战
 	    ■ 配置 类组件之间无依赖关系用Lite模式加速容器启动过程，减少判断
 	    ■ 配置类组件之间有依赖关系，方法会被调用得到之前单实例组件，用Full模式
+	    
+	    
+ * 4、@Import({User.class, DefaultShutdownHook.class})
+ *      给容器中自动创建出这两个类型的组件、默认组件的名字就是全类名
+ *
+ *
+ *
  */
+
+
+// 写在容器类的组件里就可以.比如@Component、@Controller、@Service、@Repository
+@Import({User.class,DefaultShutdownHook.class})
 @Configuration(proxyBeanMethods = false) //告诉SPRINGBOOT 这是一个配置类 == 配置文件beans.XML
 public class MyConfig {
 

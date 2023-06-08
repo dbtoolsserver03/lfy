@@ -8,6 +8,8 @@ import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
 import com.atguigu.boot.bean.config.MyConfig;
 
+import ch.qos.logback.core.hook.DefaultShutdownHook;
+
 @SpringBootApplication(scanBasePackages = "com.atguigu")
 public class MainApplication {
 
@@ -47,6 +49,12 @@ public class MainApplication {
 		System.out.println("当proxyBeanMethods为TRUE时： 用户的宠物:" + (user01.getPet() == tom));//true
 		//System.out.println("当proxyBeanMethods为FALSE时：  用户的宠物:" + (user01.getPet() == tom));//false
 	
+		// 5.获取组件
+		System.out.println("=====");
+		for (String name : run.getBeanNamesForType(User.class)) {
+			System.out.println(name);
+		}
+		System.out.println(run.getBean(DefaultShutdownHook.class));
 	}
 
 }
