@@ -38,7 +38,8 @@ public class MainApplication {
 		// 保持组件单实例
 		User user = bean.user01();
 		User user1 = bean.user01();
-		System.out.println("当proxyBeanMethods为TRUE时："+(user==user1));
+		System.out.println("当proxyBeanMethods为TRUE时："+(user==user1));//true
+		//System.out.println("当proxyBeanMethods为FALSE时："+(user==user1));//false
 	
 	}
 
