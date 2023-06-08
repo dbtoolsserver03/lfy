@@ -10,20 +10,26 @@ import com.atguigu.boot.bean.User;
  * 2.配置类本身也是组件
  * 3.proxyBeanMethods:代理Bean的方法 默认为true
  *    Full(true),Lite轻量(false)
- * 
- * 
+ *      Full(proxyBeanMethods = true)、【保证每个@Bean方法被调用多少次返回的组件都是单实例的】
+ *      Lite(proxyBeanMethods = false)【每个@Bean方法被调用多少次返回的组件都是新创建的】
+ *      组件依赖必须使用Full模式默认。其他默认是否Lite模式
+ *   ○ 最佳实战
+	    ■ 配置 类组件之间无依赖关系用Lite模式加速容器启动过程，减少判断
+	    ■ 配置类组件之间有依赖关系，方法会被调用得到之前单实例组件，用Full模式
  */
-@Configuration(proxyBeanMethods = true) //告诉SPRINGBOOT 这是一个配置类 == 配置文件beans.XML
+@Configuration(proxyBeanMethods = false) //告诉SPRINGBOOT 这是一个配置类 == 配置文件beans.XML
 public class MyConfig {
 
 	
 	/**
-	 * 外部无认对配置类中的这个组件注册方法调用多少次，获取的伏特加不急之前注册容器中的单实例对象
+	 * 外部无论对配置类中的这个组件注册方法调用多少次，获取的伏特加不急之前注册容器中的单实例对象
 	 * 
 	 * */
 	@Bean //给容器中添加组件，以方法名作为组件的id,返回类型就是组件类型，反回的值，就是组件在容器中的实例
 	public User user01() {
-		return new User("zhangsan", 18);
+		User zhangsan = new User("zhangsan", 18);
+		zhangsan.setPet(tomcatPet());
+		return zhangsan;
 	}
 	
 	@Bean("tom")

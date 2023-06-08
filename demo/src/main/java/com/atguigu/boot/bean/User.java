@@ -9,8 +9,18 @@ public class User {
 
     private String name;
     private Integer age;
+    private Pet pet;
+    
 
-    public User(String name,Integer age){
+    public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+
+	public User(String name,Integer age){
         this.name = name;
         this.age = age;
     }
@@ -33,7 +43,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", age=" + age + "]";
+		return "User [name=" + name + ", age=" + age + ", pet=" + pet + "]";
 	}
     
 

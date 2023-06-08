@@ -40,6 +40,12 @@ public class MainApplication {
 		User user1 = bean.user01();
 		System.out.println("当proxyBeanMethods为TRUE时："+(user==user1));//true
 		//System.out.println("当proxyBeanMethods为FALSE时："+(user==user1));//false
+		
+		User user01 = run.getBean("user01",User.class);
+		Pet tom = run.getBean("tom",Pet.class);
+		
+		System.out.println("当proxyBeanMethods为TRUE时： 用户的宠物:" + (user01.getPet() == tom));//true
+		//System.out.println("当proxyBeanMethods为FALSE时：  用户的宠物:" + (user01.getPet() == tom));//false
 	
 	}
 
