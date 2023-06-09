@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atguigu.boot.bean.Car;
 import com.atguigu.boot.bean.User;
+import com.atguigu.boot.bean.yml.Person;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -31,4 +32,17 @@ public class HelloController {
         return car;
     }
 
+    
+    @Autowired
+    Person person;
+
+    @RequestMapping("/person")
+    public Person person(){
+
+        String userName = person.getUserName();
+        System.out.println(userName);
+        return person;
+    }
+    
+    
 }
