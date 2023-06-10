@@ -45,7 +45,9 @@ person:
 #    redis:
 #      time-to-live: 11000
 
+
 #不可以配置静态资源的访问前缀。否则导致 index.html不能被默认访问
+
 #spring:
 #  mvc:
 #    static-path-pattern: /res/**
