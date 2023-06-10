@@ -17,22 +17,22 @@ public class HelloController {
 	public String hanle01() {
 		return "Hello,Spring Boot 2!" + "你好";
 	}
-	
 
-	
+
+
     @Autowired
     Car car;
     @RequestMapping("/car")
     public Car car(){
     	log.info("请求进来了....");
-    	
+
     	User u = new User();
     	u.setAge(1);
-    	
+
         return car;
     }
 
-    
+
     @Autowired
     Person person;
 
@@ -43,6 +43,13 @@ public class HelloController {
         System.out.println(userName);
         return person;
     }
-    
-    
+    @RequestMapping("/index")
+    public Person personIndex(){
+
+        String userName = person.getUserName();
+        System.out.println(userName);
+        return person;
+    }
+
+
 }
