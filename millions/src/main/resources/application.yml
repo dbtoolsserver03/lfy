@@ -1,0 +1,12 @@
+spring:
+  servlet:
+    multipart:
+      max-request-size: 30MB
+      max-file-size: 1024MB
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  main:
+    allow-circular-references: true
+
