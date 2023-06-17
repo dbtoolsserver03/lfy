@@ -121,10 +121,7 @@ public class LamdaTest {
 
 		MyInterface myInterface1 = (s)->System.out.println(s);
 		myInterface1.doSomething("hello world");
-
-
 	}
-
 
 	@Test
 	public void run8() {
@@ -166,9 +163,34 @@ public class LamdaTest {
 		list3.forEach(System.out::println);
 	}
 
+	@Test
+	public void run11() {
+
+		A a = new A() {
+			@Override
+			public int method(String str) {
+				return new Integer(str);
+			}
+		};
+		System.out.println(a.method("111"));
+
+		A a1 = (str)-> {
+			return Integer.valueOf(str);
+		};
+		A a2 = (str)->Integer.valueOf(str);
+
+		System.out.println(a2.method("222"));
+		A a3 = Integer::valueOf;
+		System.out.println(a3.method("333"));
+		A a4 = Integer::new;
+		System.out.println(a4.method("444"));
+	}
+
 }
 interface MyInterface {
-
 	void doSomething(String s);
+}
 
+interface A {
+	int method(String str);
 }
